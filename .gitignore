@@ -1,0 +1,7 @@
+.gdbinit
+.gdb_history
+
+.vscode
+
+**/target/
+**/Cargo.lock
