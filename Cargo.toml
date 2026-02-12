@@ -1,0 +1,23 @@
+[workspace]
+resolver = "2"
+
+members = [
+    "kernel/mm",
+    "kernel/arch/riscv64",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+authors = ["Han Wang <wanghan192@mails.ucas.ac.cn>"]
+license = "GPL-3.0-or-later OR Apache-2.0 OR MulanPSL-2.0"
+homepage = "https://github.com/happynumb-wh/rust-ucas-os.git"
+repository = "https://github.com/happynumb-wh/rust-ucas-os.git"
+keywords = ["rust-ucas-os", "kernel"]
+categories = ["os", "no-std"]
+
+[workspace.dependencies]
+mm = { path = "kernel/mm" }
+
+[profile.release]
+lto = true
