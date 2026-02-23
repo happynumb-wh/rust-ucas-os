@@ -2,7 +2,7 @@ OUTPUT_FORMAT("elf64-littleriscv", "elf64-littleriscv",
               "elf64-littleriscv")
 OUTPUT_ARCH("riscv")
 
-TEXT_START = 0xffffffc080200000;
+TEXT_START = 0x80200000;
 
 ENTRY(_start)
 SECTIONS
@@ -17,7 +17,8 @@ SECTIONS
   .text           :
   {
     _ftext = . ;
-    
+    _boot = . ;
+    *(.text.boot .text.boot.*)
     *(.text.unlikely .text.*_unlikely .text.unlikely.*)
     *(.text.exit .text.exit.*)
     *(.text.startup .text.startup.*)

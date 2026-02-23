@@ -3,7 +3,7 @@ resolver = "2"
 
 members = [
     "kernel/mm",
-    "kernel/arch/riscv64",
+    "kernel/arch/riscv64", "kernel/config",
 ]
 
 [workspace.package]
@@ -17,7 +17,13 @@ keywords = ["rust-ucas-os", "kernel"]
 categories = ["os", "no-std"]
 
 [workspace.dependencies]
+config = { path = "kernel/config" }
 mm = { path = "kernel/mm" }
+riscv64 = { path = "kernel/arch/riscv64" }
+
+[profile.dev]
+opt-level = 0
 
 [profile.release]
+opt-level = 3
 lto = true
