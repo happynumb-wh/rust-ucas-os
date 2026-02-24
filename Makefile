@@ -5,21 +5,20 @@ TARGET := riscv64gc-unknown-none-elf
 TARGET_DIR := $(PWD)/target
 
 ARCH ?= riscv64
-MODE ?= release
+MODE ?= debug
 
 
 OBJCOPY = rust-objcopy --binary-architecture $(TARGET)
 
 
 
-.DEFAULT_GOAL := all
+# .DEFAULT_GOAL := all
 
 include script/make/compile.mk
 include script/make/run.mk
 
 
-all: kernel
-	@echo "Building project..."
+all: $(rust_elf)
 
 
 clean:

@@ -1,5 +1,5 @@
 [package]
-name = "config"
+name = "kernel"
 version.workspace = true
 edition.workspace = true
 authors.workspace = true
@@ -9,5 +9,16 @@ repository.workspace = true
 keywords.workspace = true
 categories.workspace = true
 
+[features]
+std = ["log/std"]
+
+
 [dependencies]
 axconfig-macros = "0.2.1"
+cfg-if = "1.0.4"
+log = "0.4.29"
+sbi-rt = {version = "0.0.3" , features = ["legacy"] }
+
+
+[dev-dependencies]
+kernel = {workspace = true}

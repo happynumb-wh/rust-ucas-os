@@ -5,7 +5,7 @@ build_args := \
   $(build_args-$(MODE)) \
 
 
-BUILD_DIR = $(PWD)/kernel/arch/riscv64/
+BUILD_DIR = $(PWD)/kernel/
 
 rust_package := $(shell cat $(BUILD_DIR)/Cargo.toml | sed -n 's/^name = "\([a-z0-9A-Z_\-]*\)"/\1/p')
 rust_elf = $(TARGET_DIR)/$(TARGET)/$(MODE)/$(rust_package)
@@ -25,8 +25,15 @@ $(rust_bin): $(rust_elf)
 	$(OBJCOPY) --strip-all -O binary $< $@
 
 
-$(rust_elf): 
+$(rust_elf): kernel
+
+define cargo_build
+  $(call run_cmd,cargo -C $(BUILD_DIR) build,$(build_args)) 
+endef
+
+kernel:
+	@echo "Building project..."
 	cargo -C $(BUILD_DIR) build $(build_args)
 
 
-kernel: $(rust_bin)
+.PHONY: kernel
