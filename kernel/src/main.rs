@@ -22,7 +22,7 @@ fn panic(_info: &PanicInfo) -> ! {
 #[unsafe(no_mangle)]
 fn main() {
     uclog::uclog::init();
-    log::warn!("Hello, world! This is a warning message.");
+    log::warn!("Hello, world! This is a warning message.\n");
     uc_println!("{}", config::logo::LOGO);
     loop {}
 }

@@ -1,3 +1,5 @@
+build_args-release := --release
+
 build_args := \
   -Z unstable-options \
   --target $(TARGET) \
